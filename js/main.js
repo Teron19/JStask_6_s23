@@ -1,13 +1,9 @@
 ;
 (() => {
   'use strict'
-
   const btn = document.getElementById("add"); //нашол кнопку Добавить изображение
   let valueImage = document.getElementById('count'); //сколько картинок на екране
   const resultBlock = document.querySelector('#result');
-
-  
-
 
   /*function sliceData(preparedData) {
     switch (amountImage.value) {
@@ -20,7 +16,6 @@
     }
   }
   */
-
   function fetchData(date) {
     return date.map(el => {
       return {
@@ -72,7 +67,6 @@
     resultBlock.innerHTML = secondItemTemplate;
   }
 
-
   /*let dataCopy = data.slice();
   if(count == '1') {
     dataCopy = dataCopy.splice(0, 3)
@@ -80,8 +74,6 @@
     dataCopy = dataCopy.splice(0,)
   }
   */
-
-
 
  function getCount(num) {
     valueImage.innerHTML = num.length;
