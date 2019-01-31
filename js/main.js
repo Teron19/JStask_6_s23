@@ -75,6 +75,7 @@
 
 
   
+  
   /*let dataCopy = data.slice();
   if(count == '1') {
     dataCopy = dataCopy.splice(0, 3)
@@ -82,9 +83,6 @@
     dataCopy = dataCopy.splice(0,)
   }
   */
-
-
-
 
 
 
