@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
 
         <ul class="nav navbar-nav hidden-sm hidden-md">
-          <li class="active"><a href="#">Работа с DOM</a></li>
+          <li class="active"><a href="#">Пример того, что вы научитесь делать</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -36,71 +36,40 @@
         </ul>
       </div>
     </div>
-	</nav>
-	
-	
+  </nav>
 
   <div class="site-wrapper">
-			<div class="row text-center">
-					<div class="col-lg-4 col-md-4"></div>
-					<div class="col-lg-4 col-md-4">
-						<select id="type-selector" class="form-control">
-							<option value="0">-Выберите один из вариантов-</option>
-							<option default value="1">Использовать replace</option>
-							<option value="2">Использовать шаблонные строки</option>
-							<option value="3">Использовать createElement</option>
-						</select>
-	
-	
-					</div>
-					<div class="col-lg-4 col-md-4">
-						<select id="line-selector" class="form-control count-selector">
-							<option default value="0">Все</option>
-							<option value="1">Три картинки</option>
-							<option value="2">Шесть картинок</option>
-						</select>
-						<br><br>
-					</div>
-	
-	
-					<div class="col-lg-12 col-md-12">
-						<div class="btn btn-primary" id="play">Построить галлерею</div>
-						<br><br>
-					</div>
-				</div>
     <div class="container">
-      <div class="row text-center first-group hide" id="first-group">
-        <div class="col-md-12">
-          <h3>Галлерея построенная с помощью replace</h3>
-        </div>
-        <div class="col-md-12">
-          <div id="first-line"></div>
+      <div class="row text-center">
+        <div class="col-lg-12 col-md-12">
+          <h3>Галерея</h3>
         </div>
       </div>
 
-      <div class="row text-center second-group hide" id="second-group">
-        <div class="col-md-12">
-          <h3>Галлерея построенная с помощью шаблонных строк</h3>
+      <div class="row">
+        <!--Вибор сортировки-->
+        <div class="col-lg-4 col-md-4">
+          <select id="line-selector" class="form-control count-selector">
+            <option default value="0">А - Я</option>
+            <option value="1">Я - А</option>
+            <option value="2">Сначала новые</option>
+            <option value="3">Сначала старые</option>
+          </select>
         </div>
-        <div class="col-md-12">
-          <div id="second-line"></div>
-        </div>
-      </div>
-
-      <div class="row text-center third-group hide" id="third-group">
-        <div class="col-md-12">
-          <h3>Галлерея построенная с помощью createElement</h3>
-        </div>
-        <div class="col-md-12">
-          <div id="third-line"></div>
+        <div class="col-lg-12 col-md-12 text-center">
+          <button class="btn btn-default" type="button" id="add" data-toggle="tooltip" data-placement="left" title="Добавить одно изображение">Добавить изображение</button>
+          <p class="count-text">Добавленно изображений: <span id="count"></span></p>
         </div>
       </div>
 
-
-
+      <div class="row" id="result"></div>
+      <!--Сюда вписать результат шаблон строками-->
     </div>
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
