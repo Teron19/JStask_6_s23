@@ -6,6 +6,7 @@
   let valueImage = document.getElementById('count'); //сколько картинок на екране
   const resultBlock = document.querySelector('#result');
 
+  
 
 
   /*function sliceData(preparedData) {
@@ -20,18 +21,16 @@
   }
   */
 
-  function fetchData() {
-    let newData = [];
-    data.forEach(el => {
-      newData.push({
+  function fetchData(date) {
+    return date.map(el => {
+      return {
         url: transformURL(el.url),
         id: el.id,
         name: transformName(el.name),
         description: transformDescript(el.description),
         date: transformDate(el.date)
-      })
+      }
     })
-    return newData;
 
     function transformURL(url) {
       return (url.substr(0, 6) == 'http://') ?
@@ -57,7 +56,7 @@
   function renderGalleryByString(date) {
     let secondItemTemplate = '';
     date.forEach(item => {
-      secondItemTemplate = `<div class="col-sm-3 col-sm-4 col-xs-6" text-center>
+      secondItemTemplate += `<div class="col-sm-3 col-sm-4 col-xs-6" text-center>
       <div class='thumbnail'>
         <img src="${item.url}" alt="${item.name}"></img>
           <div class='caption'>
@@ -65,7 +64,7 @@
           <p>${item.description}</p>
           <p>${item.date}</p>
           </div>
-          <button class="btn btn-danger" onclick="removeElement(event)">Удалить</button>
+          <button class="btn btn-danger" class='del' data-id='${item.id}'>Удалить</button>
       </div>
    </div>`;
   
@@ -88,25 +87,43 @@
 
 
 
- function lengthDisplayGallery(num) {
-  if (num.length > 10) {
-    alert('foo');
-    resultBlock.classList.add('hide');
-  } else {
-    valueImage.innerHTML += num.length;
-    
+ function getCount(num) {
+    valueImage.innerHTML = num.length;
   }
- }
  
+/*function stopAddImg() {
 
+}*/
 
+function addImg() {
+  if(visibleItem.length == 10) {
+    stopAddImg();
+  }
+   else {
+    if(preparedData.length === 0) return;
+      let elem = preparedData.pop();
+        visibleItem.push(elem);
+ 
+  }
+}
 
+/*function deleteImg(event){
+  //if(!event.target.getAttribute('data-id')) return;
 
+  let el = visibleItem.pop();
+  preparedData.push(el);
+
+}*/
+  let visibleItem = []; //для добавления в него новых картинок для изображения на екране
+  let preparedData;
+ // const galleryBuild;
   function run() {
-    const preparedData = fetchData();
-    const galleryBuild = renderGalleryByString(preparedData);
-    valueImage.addEventListener('click', galleryBuild); 
-    lengthDisplayGallery(preparedData);
+    preparedData = fetchData(data);
+    btn.addEventListener("click", addImg);
+    //deleteImg();
+    
+    valueImage.addEventListener('click', renderGalleryByString(visibleItem)); 
+    getCount(preparedData);
   }
 
   btn.addEventListener("click", run);
