@@ -18,8 +18,8 @@
     text-align: left;
 }
 
-.count-selector {
-    width:130px;
+.count-selector { 
+    width: 200px; /*отвечает зв ширину вибранного варианта сортировки*/
 }
 
 .top-padding {
