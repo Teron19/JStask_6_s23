@@ -19,7 +19,7 @@
         timeStamp: el.date, //для сортировки (єто время мы оставляем в миллисекундах)
         date: transformDate(el.date)
       }
-    })
+    }).reverse();
   }
 
     function transformURL(url) {
@@ -71,8 +71,14 @@
     let indexDelItem = -1;
     let idValue = event.target.getAttribute('data-id');
 
+    visibleItem.forEach((item, index) => {//indexOf
+            if (item.id == idValue) {
+                indexDelItem = index;
+            }
+        })
+
     indexDelItem = visibleItem.indexOf(item.id = idValue); 
-    preparedData = preparedData.concat(visibleItem.splice(indexDelTem, 1));
+    preparedData = preparedData.concat(visibleItem.splice(indexDelItem, 1));
     sortGallery(visibleItem);
     visibleCount(visibleItem);
     renderGalleryByString(renderGalleryByString);
@@ -98,7 +104,7 @@
       sortGallery(visibleItem);
       visibleCount(visibleItem);
       renderGalleryByString(visibleItem);
-      changeStateBtn();
+      changeStateBtn(); //делает кнопку "Добавить изображение" не активной.
     }
   }
 
